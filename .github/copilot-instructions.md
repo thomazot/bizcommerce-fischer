@@ -73,14 +73,16 @@ Development runs on port 3000 proxying `https://www.fischer.com.br` with custom 
 
 Componentes SASS **DEVEM** importar helpers (usando loadPaths configurado no Gulp):
 ```sass
-// OPÇÃO 1: Import global único (recomendado)
+// OPÇÃO 1: Import global único (recomendado e padrão)
 @use 'globals' as *
 
-// OPÇÃO 2: Imports individuais
+// OPÇÃO 2: Imports individuais (apenas se necessário)
 @use 'variables' as *
 @use 'media' as *
 @use 'classes' as *
 ```
+
+**IMPORTANTE**: O arquivo `globals.sass` centraliza todos os imports usando `@forward`, permitindo acesso a todas as variáveis, mixins e funções com uma única linha de import.
 
 ### File Organization
 - Each page has its own folder in `src/blocks/` (e.g., `sobre-nos/`)
@@ -119,27 +121,20 @@ Use placeholder selectors from `helpers/variables.sass`:
 When creating new components:
 1. Create `.njk` template in appropriate `src/blocks/[page]/` folder
 2. Create corresponding `.sass` file with BEM structure
-3. **ALWAYS** start SASS file with helper imports (using simplified loadPaths):
+3. **ALWAYS** start SASS file with helper import (usando loadPaths simplificado):
    ```sass
-   @use 'variables' as *
-   @use 'media' as *
-   @use 'classes' as *
+   @use 'globals' as *
    ```
 4. Create `.js` file for component behavior (optional)
 5. Import SASS file in main page SASS file
 6. Use `parseJSON` filter or auto-loading for data
 7. Follow `fischer-2026` BEM naming convention
-2. Create corresponding `.sass` file with BEM structure
-3. **ALWAYS** start SASS file with helper imports (using simplified loadPaths):
-   ```sass
-   @use 'variables' as *
-   @use 'media' as *
-   @use 'classes' as *
-   ```
-4. Create `.js` file for component behavior (optional)
-5. Import SASS file in main page SASS file
-6. Use `parseJSON` filter or auto-loading for data
-7. Follow `fischer-2026` BEM naming convention
+
+**Build System Notes**:
+- Task execution order: `clean` → `images` → `html` → `css` → `cssUnified` → `javascript` → `javascriptUnified` → `serveProxy` → `watchTask`
+- Image optimization happens before watch mode to ensure assets are available immediately
+- All tasks use `gulp-plumber` for robust error handling without stopping the build process
+- Terser minification preserves ES6+ syntax for modern browser compatibility
 
 JavaScript patterns:
 - Use `document.addEventListener("DOMContentLoaded", callback)` for initialization

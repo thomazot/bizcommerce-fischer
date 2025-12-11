@@ -133,18 +133,6 @@ export function javascriptUnified(done) {
         }
       }))
       .pipe(concat('scripts.js'))
-      .pipe(terser({
-        compress: {
-          drop_console: false
-        },
-        mangle: true
-      }).on('error', function(err) {
-        console.error('❌ Erro na minificação JavaScript unificado:', err.message);
-        console.error('📍 Linha:', err.line || 'desconhecida');
-        console.error('📍 Coluna:', err.col || 'desconhecida');
-        console.error('📍 Processamento continua...');
-        this.emit('end');
-      }))
       .pipe(gulp.dest('./dist/javascript'))
       .on('error', function(err) {
         console.error('❌ Erro ao salvar JavaScript unificado:', err.message);
@@ -405,14 +393,14 @@ export default gulp.series(
     console.log('🚀 Iniciando build...');
     done();
   },
+  images,    // 🖼️ Imagens primeiro (antes do watch)
   html,      // 🆕 HTML antes de tudo
   css,
   cssUnified, // 🔗 CSS unificado
   javascript, // 📁 JavaScript
   javascriptUnified, // 🔗 JavaScript unificado
   serveProxy,
-  watchTask,
-  images,
+  watchTask, // 👀 Watch por último (modo infinito)
   (done) => {
     console.log('✅ Build finalizado com sucesso!');
     done();
