@@ -1,0 +1,6 @@
+{% from "helpers/classes.njk" import cls %}
+{% set sobreNosData = 'sobre-nos.json' | parseJSON %}
+{# Description Block #}
+<div class="{{ cls('description') }} {{ cls('description', '', 'red') }}">
+  {{ sobreNosData.description }}
+</div>

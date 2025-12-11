@@ -1,0 +1,63 @@
+@use '../../helpers/variables' as *
+@use '../../helpers/media' as *
+@use '../../helpers/classes' as *
+
+@include cls(segments)
+
+  @include element(checkbox)
+    display: none
+
+  @include element(title)
+    @extend %title-3
+
+  @include element(description)
+    @extend %normal-text-medium
+
+  @include element(header)
+    @extend %normal-text-medium
+
+  @include element(container)
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+  @include element(box)
+    box-sizing: border-box
+    background: var(--brand-off-white)
+    border-radius: $radius-large
+    padding: 24px 16px
+
+    &:hover, &:active
+      .#{cls-name(segments, name)}
+        border-bottom: 1px solid var(--base-black)
+
+      .#{cls-name(segments, content)}
+        max-height: 100%
+        padding: 64px 0 24px
+
+  @include element(name)
+    @extend %normal-text-medium
+    box-sizing: border-box
+    margin: 0
+
+    svg
+      transform: rotate(180deg)
+
+  @include element(content)
+    box-sizing: border-box
+    margin: 0
+    overflow: hidden
+    max-height: 0
+
+  @include element(text)
+    @extend %normal-text-medium
+
+  @include element(link)
+    @extend %small-text-medium
+    color: var(--brand-red-1)
+
+  @include element(label)
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 56px

@@ -1,0 +1,89 @@
+{
+  "breadcrumb": [
+    { "text": "Home", "url": "/" },
+    { "text": "Sobre nós", "active": true }
+  ],
+  "title": "Sobre nós",
+  "description": "A Fischer comercializa seus produtos não apenas no Brasil, mas também em centenas de pontos…",
+  "history": [
+    {
+      "year": "1961",
+      "title": "O início",
+      "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-image-1.jpg'",
+      "descriptions": [
+        "No começo, tudo se resumia a uma pequena oficina…"
+      ]
+    },
+    {
+      "year": "1966",
+      "title": "Conquistando o Brasil",
+      "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-image-2.jpg'",
+      "legend": "Da esquerda para a direita os irmãos: Ingo, Nivert, Egon, Edemar e Norival Fischer.",
+      "descriptions": [
+        "Da pequena oficina, o negócio evoluiu…",
+        "Instalada em Brusque, Santa Catarina…"
+      ]
+    },
+    {
+      "year": "Hoje",
+      "title": "Gerando praticidade",
+      "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-image-3.jpg'",
+      "descriptions": [
+        "Hoje, após mais de 59 anos de história…"
+      ]
+    }
+  ],
+  "ourValues": {
+    "title": "Nossos Valores",
+    "description": "lorem ipsum dolor sit amet consectetur adipiscing elit",
+    "items": [
+      {
+        "name": "Foco no cliente",
+        "text": "Para encantar e fortalecer o relacionamento com a marca;"
+      },
+      {
+        "name": "Foco no resultado",
+        "text": "Para garantir a sustentabilidade…"
+      },
+      {
+        "name": "Inovação",
+        "text": "Guiando-nos para o futuro…"
+      },
+      {
+        "name": "Respeito ética e honestidade",
+        "text": "Pilares de credibilidade…"
+      },
+      {
+        "name": "Espirito de equipe",
+        "text": "Energia positiva…"
+      },
+      {
+        "name": "Qualidade",
+        "text": "Fazer bem feito."
+      }
+    ]
+  },
+  "segments": {
+    "title": "Segmentos de mercado",
+    "description": "Além do segmento de eletrodomésticos…",
+    "items": [
+      {
+        "name": "Eletrodomésticos",
+        "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-segments-1.jpg'",
+        "text": "Lorem ipsum dolor sit amet…",
+        "link": { "text": "ver produtos", "url": "" }
+      },
+      {
+        "name": "Construção Civil",
+        "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-segments-2.jpg'",
+        "text": "Lorem ipsum dolor sit amet…",
+        "link": { "text": "ver produtos", "url": "" }
+      },
+      {
+        "name": "Sistema Construtivo Modular",
+        "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-segments-3.jpg'",
+        "text": "Lorem ipsum dolor sit amet…"
+      }
+    ]
+  }
+}

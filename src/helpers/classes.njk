@@ -1,0 +1,11 @@
+{% set prefix = "fischer-2026" %}
+{% macro cls(block, element="", modifier="") %}
+  {%- set result = prefix + "-" + block -%}
+  {%- if element -%}
+    {%- set result = result + "__" + element -%}
+  {%- endif -%}
+  {%- if modifier -%}
+    {%- set result = result + "--" + modifier -%}
+  {%- endif -%}
+  {{ result }}
+{%- endmacro %}

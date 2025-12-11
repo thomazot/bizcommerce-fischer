@@ -1,0 +1,40 @@
+@use '../../helpers/variables' as *
+@use '../../helpers/media' as *
+@use '../../helpers/classes' as *
+
+@include cls(breadcrumb)
+  display: flex
+  margin: 0
+  padding: 0
+  text-decoration: none
+  list-style-type: none
+  color: var(--base-white)
+  line-height: 24px
+
+@include cls(breadcrumb, item)
+  @extend %small-text-medium
+  display: flex
+  margin: 0
+
+  &:not(:last-child)
+    &::after
+      display: flex
+      justify-content: center
+      align-items: center
+      content: "•"
+      width: 24px
+      height: 24px
+
+@include cls(breadcrumb, item, active)
+  @extend %small-text-medium
+
+@include cls(breadcrumb, link)
+  color: currentColor
+  line-height: 24px
+  height: auto
+
+  &, &:hover, &:active, &:focus, &:visited
+    color: currentColor
+
+@include cls(breadcrumb, '', sobre-nos)
+  // Estilos específicos para a página sobre-nos

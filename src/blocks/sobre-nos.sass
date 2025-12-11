@@ -1,42 +1,21 @@
-@use '../variables' as *
-@use '../media' as *
+@use '../helpers/variables' as *
+@use '../helpers/media' as *
+
+// Importações dos componentes individuais
+@use 'sobre-nos/breadcrumb'
+@use 'sobre-nos/history'
+@use 'sobre-nos/our-values'
+@use 'sobre-nos/segments'
+
+// Estilos globais da página
+.breadcrumbs
+  display: none !important
 
 div[data-content-type="row"]
   .widget
     margin: 0
 
 .fischer-2026
-  &-breadcrumb
-    display: flex
-    margin: 0
-    padding: 0
-    text-decoration: none
-    list-style-type: none
-
-    color: var(--base-white)
-
-    line-height: 24px
-
-    &_item
-      @extend %small-text-medium
-      display: flex
-      margin: 0
-
-      &:not(:last-child)
-
-        &::after
-          display: flex
-          justify-content: center
-          align-items: center
-          content: "•"
-          width: 24px
-          height: 24px
-
-    &_link
-      color: currentColor
-      line-height: 24px
-      height: auto
-
   &-title
     @extend %title-1
     color: var(--base-white)
@@ -53,75 +32,6 @@ div[data-content-type="row"]
     @include tablet
       padding: 64px 80px
 
-  // Historico
-
-  &-history
-    &__container
-      &:first-child
-        .fischer-2026-history__figure
-          @include mobile
-            padding-top: 64px
-
-      @include tablet
-        display: flex
-        min-width: 1px
-
-    &__title
-      @extend %title-3
-      color: var(--base-black)
-
-      span
-        color: var(--brand-red-1)
-    &__content,
-    &__figure
-      @include mobile
-        margin-left: 20px
-        padding-left: 36px
-        padding-right: 20px
-        padding-top: 20px
-        padding-bottom: 20px
-
-        border-left: 1px solid var(--base-black)
-
-    &__content
-      @extend %normal-text-medium
-
-      @include tablet
-        order: 1
-        display: flex
-        justify-content: center
-        align-items: flex-end
-        flex-direction: column
-        min-width: 1px
-        border-right: 1px solid var(--base-black)
-        text-align: right
-        padding: 40px
-
-    &__figure
-      position: relative
-
-      &::before
-        content: ""
-        width: 10px
-        height: 10px
-        background: var(--base-white)
-        border-top: 1px solid var(--base-black)
-        border-right: 1px solid var(--base-black)
-        display: block
-        position: absolute
-        top: 50%
-        left: -5px
-        margin-top: -5px
-        transform: rotate(45deg)
-        border-radius: 3px
-
-      @include tablet
-        flex: 0 0 50%
-        padding: 40px
-        order: 2
-    &__legend
-      @extend %small-text-medium
-
   &-sobre-nos-text
     @extend %large-text-regular
     color: var(--base-black)
@@ -136,121 +46,3 @@ div[data-content-type="row"]
 
     &--uppercase
       text-transform: uppercase
-
-  // valores
-  &-our-values
-    @include tablet
-      display: flex
-
-    &__header
-      @extend %normal-text-medium
-      box-sizing: border-box
-      background-color: var(--brand-red-1)
-      color: var(--base-white)
-      padding: 64px 16px 24px
-
-      @include mobile
-        border-radius: $radius-large $radius-large 0 0
-
-      @include tablet
-        flex: 0 0 326px
-        display: flex
-        justify-content: flex-end
-        align-items: flex-start
-        flex-direction: column
-        padding: 40px 40px 64px
-
-        border-radius: $radius-large 0 0 $radius-large
-
-    &__title
-      @extend %title-3
-
-    &__content
-      background: var(--brand-off-white)
-      padding: 24px 16px 64px
-
-      @include tablet
-        flex: 1
-        padding: 64px 40px
-
-    &__list
-      margin: 0
-      padding: 0
-      list-style: none
-
-      @include tablet
-        display: flex
-        flex-flow: wrap row
-        gap: 24px
-
-      &:not(:last-child)
-        margin-bottom: 24px
-
-      p
-        margin: 0
-
-    &__item
-      @include tablet
-        flex: 0 0 calc(50% - 24px)
-
-    &__name
-      @extend %normal-text-medium
-      display: flex
-      align-items: center
-
-      svg
-        margin-right: 6px
-
-    &__text
-      @extend %small-text-medium
-      padding-left: 24px
-
-  // Segmentos
-  &-segments
-    &__checkbox
-      display: none
-
-    &__title
-      @extend %title-3
-
-    &__description
-      @extend %normal-text-medium
-
-    &__container
-      display: flex
-      flex-direction: column
-      gap: 16px
-
-    &__box
-      box-sizing: border-box
-      background: var(--brand-off-white)
-      border-radius: $radius-large
-      padding: 24px 16px 24px
-
-      &:hover, &:active
-        .fischer-2026-segments
-          &__name
-            border-bottom: 1px solid var(--base-black)
-
-          &__content
-            max-height: 100%
-            padding: 64px 0 24px
-
-    &__name, &__content
-      box-sizing: border-box
-      margin: 0
-
-    &__label
-      display: flex
-      justify-content: space-between
-      align-items: center
-      height: 56px
-
-    &__name
-
-      svg
-        transform: rotate(180deg)
-
-    &__content
-      overflow: hidden
-      max-height: 0

@@ -1,0 +1,18 @@
+{% from "helpers/classes.njk" import cls %}
+{% set sobreNosData = 'sobre-nos.json' | parseJSON %}
+<div class="{{ cls('our-values') }}">
+  <div class="{{ cls('our-values', 'header') }}">
+    <h2 class="{{ cls('our-values', 'title') }}">{{ sobreNosData.ourValues.title }}</h2>
+    <p class="{{ cls('our-values', 'description') }}">{{ sobreNosData.ourValues.description }}</p>
+  </div>
+  <div class="{{ cls('our-values', 'content') }}">
+    <ul class="{{ cls('our-values', 'list') }}">
+      {% for item in sobreNosData.ourValues.items %}
+        <li class="{{ cls('our-values', 'item') }}">
+          <p class="{{ cls('our-values', 'name') }}">{{ item.name }}</p>
+          <p class="{{ cls('our-values', 'text') }}">{{ item.text }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+{% from "helpers/classes.njk" import cls %}
+{% set sobreNosData = 'sobre-nos.json' | parseJSON %}
+<div class="{{ cls('history') }}">
+  {% for item in sobreNosData.history %}
+    <div class="{{ cls('history', 'container') }}">
+      <figure class="{{ cls('history', 'figure') }}">
+        <img src="{{ item.image | magento }}" alt="{{ item.title }}"/>
+        {% if item.legend %}
+          <legend class="{{ cls('history', 'legend') }}">{{ item.legend }}</legend>
+        {% endif %}
+      </figure>
+      <div class="{{ cls('history', 'content') }}">
+        <h2 class="{{ cls('history', 'title') }}">
+          {% if item.year %}
+            <span>{{ item.year }}:</span>
+          {% endif %}
+          {{ item.title }}
+        </h2>
+        {% for paragraph in item.descriptions %}
+          <p class="{{ cls('history', 'description') }}">{{ paragraph }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>

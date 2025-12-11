@@ -1,0 +1,22 @@
+{% from "helpers/classes.njk" import cls %}
+{% set sobreNosData = 'sobre-nos.json' | parseJSON %}
+<div class="{{ cls('segments') }}">
+  <div class="{{ cls('segments', 'header') }}">
+    <h3 class="{{ cls('segments', 'title') }}">{{ sobreNosData.segments.title }}</h3>
+    <p class="{{ cls('segments', 'description') }}">{{ sobreNosData.segments.description }}</p>
+  </div>
+  <div class="{{ cls('segments', 'container') }}">
+    {% for item in sobreNosData.segments.items %}
+      <div class="{{ cls('segments', 'box') }}">
+        <h4 class="{{ cls('segments', 'name') }}">{{ item.name }}</h4>
+        <div class="{{ cls('segments', 'content') }}">
+          <img src="{{ item.image | magento }}" alt="{{ item.name }}"/>
+          <p class="{{ cls('segments', 'text') }}">{{ item.text }}</p>
+          {% if item.link %}
+            <a class="{{ cls('segments', 'link') }}" href="{{ item.link.url }}">{{ item.link.text }}</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
