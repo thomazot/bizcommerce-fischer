@@ -1,10 +1,13 @@
 // Template padrão para componentes SASS
 // Copie este conteúdo ao criar novos arquivos .sass
-// Agora com imports simplificados graças ao loadPaths configurado
 
-@use 'variables' as *
-@use 'media' as *
-@use 'classes' as *
+// 🌍 OPÇÃO 1: Import global único (recomendado)
+@use 'globals' as *
+
+// 🔧 OPÇÃO 2: Imports individuais (caso precise de controle específico)
+// @use 'variables' as *
+// @use 'media' as *
+// @use 'classes' as *
 
 // Exemplo de uso:
 // @include cls(meu-componente)

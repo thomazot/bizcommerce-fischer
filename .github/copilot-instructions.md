@@ -68,10 +68,15 @@ Development runs on port 3000 proxying `https://www.fischer.com.br` with custom 
 - `src/helpers/variables.sass` - Global variables, typography placeholders, CSS custom properties
 - `src/helpers/media.sass` - Responsive breakpoint mixins (`@include mobile`, `@include tablet`, etc.)
 - `src/helpers/classes.sass` - BEM class helpers (`@include cls(component)`, `@include element()`, `@include modifier()`)
+- `src/helpers/globals.sass` - Import centralizado de todos os helpers
 - `src/helpers/_component-template.sass` - Template padrão para novos componentes
 
-Componentes SASS **DEVEM** importar helpers no início (usando loadPaths configurado no Gulp):
+Componentes SASS **DEVEM** importar helpers (usando loadPaths configurado no Gulp):
 ```sass
+// OPÇÃO 1: Import global único (recomendado)
+@use 'globals' as *
+
+// OPÇÃO 2: Imports individuais
 @use 'variables' as *
 @use 'media' as *
 @use 'classes' as *

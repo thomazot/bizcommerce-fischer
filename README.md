@@ -239,13 +239,31 @@ O build system utiliza `gulp-plumber` para **nunca quebrar** o processo de desen
 5. **Configure dados**: Adicione ao `src/data/[pagina].json` ou use `parseJSON`
 6. **Siga o padrão BEM**: Use helpers `cls()` para classes consistentes
 
+### 🌍 Import Global Unificado
+
+Para facilitar o desenvolvimento, use o arquivo `globals.sass` que centraliza todos os helpers:
+
+```sass
+// ✅ RECOMENDADO: Import único
+@use 'globals' as *
+
+// ✅ ALTERNATIVA: Imports individuais  
+@use 'variables' as *
+@use 'media' as *
+@use 'classes' as *
+```
+
+**Vantagens do globals.sass:**
+- ✅ **Menos código**: Um import ao invés de três
+- ✅ **Consistência**: Sempre ter todos os helpers disponíveis
+- ✅ **Manutenção**: Mudanças centralizadas no globals.sass
+
 ### Exemplo Prático
 
 **SASS** (`src/blocks/home/hero.sass`):
 ```sass
-@use 'variables' as *
-@use 'media' as *
-@use 'classes' as *
+// Import global único (recomendado)
+@use 'globals' as *
 
 @include cls(hero)
   background: var(--brand-red-1)
