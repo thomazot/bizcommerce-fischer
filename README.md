@@ -58,10 +58,10 @@ npx gulp cssUnified
 # Compilação apenas do HTML
 npx gulp html
 
-# JavaScript individual
+# JavaScript individual minificado
 npx gulp javascript
 
-# JavaScript unificado (dist/javascript/scripts.js)
+# JavaScript unificado e minificado (dist/javascript/scripts.js)
 npx gulp javascriptUnified
 
 # Otimização de imagens
@@ -202,18 +202,25 @@ Utilize placeholders pré-definidos em `src/helpers/variables.sass`:
 
 O sistema roda em `localhost:3000` fazendo proxy para `https://www.fischer.com.br` com injeção automática de assets customizados:
 
-- **CSS**: `/custom-css/styles.css` (arquivo unificado)
-- **JavaScript**: `/custom-js/scripts.js` (arquivo unificado)
+- **CSS**: `/custom-css/styles.css` (arquivo unificado e minificado)
+- **JavaScript**: `/custom-js/scripts.js` (arquivo unificado e minificado)
 
 ### Estrutura de Build
 
 **Arquivos Individuais** (desenvolvimento):
-- `dist/blocks/sobre-nos.css` - CSS específico da página
-- `dist/blocks/sobre-nos.js` - JavaScript específico da página
+- `dist/blocks/sobre-nos.css` - CSS específico da página (minificado)
+- `dist/blocks/sobre-nos.js` - JavaScript específico da página (minificado)
 
 **Arquivos Unificados** (produção):
 - `dist/css/styles.css` - Todos os CSS concatenados e minificados
-- `dist/javascript/scripts.js` - Todos os JavaScript concatenados
+- `dist/javascript/scripts.js` - Todos os JavaScript concatenados e minificados
+
+### Otimizações Aplicadas
+
+- ✅ **CSS**: Autoprefixer + cssnano (minificação)
+- ✅ **JavaScript**: Terser (minificação + mangling) com suporte ES6+
+- ✅ **Imagens**: imagemin com plugins otimizados
+- ✅ **HTML**: Nunjucks com templates otimizados
 
 ### Tratamento de Erros
 
@@ -281,24 +288,31 @@ dist/
 ├── css/
 │   └── styles.css         # CSS unificado e minificado
 ├── javascript/
-│   └── scripts.js         # JavaScript unificado
+│   └── scripts.js         # JavaScript unificado e minificado
 ├── assets/                # Imagens otimizadas
 └── blocks/                # Templates HTML e arquivos individuais
-    ├── sobre-nos.css      # CSS individual
-    └── sobre-nos.js       # JavaScript individual
+    ├── sobre-nos.css      # CSS individual minificado
+    └── sobre-nos.js       # JavaScript individual minificado
 ```
 
 ### Integração Magento 2
 
 **Para Produção (Recomendado)**:
-1. **CSS**: Use `dist/css/styles.css` (arquivo unificado)
-2. **JavaScript**: Use `dist/javascript/scripts.js` (arquivo unificado)
+1. **CSS**: Use `dist/css/styles.css` (arquivo unificado e minificado)
+2. **JavaScript**: Use `dist/javascript/scripts.js` (arquivo unificado e minificado)
 3. **Templates**: Adapte templates de `dist/blocks/` para `.phtml`
 4. **Assets**: Importe imagens de `dist/assets/` para `media/`
 
 **Para Desenvolvimento**:
-1. **CSS**: Use arquivos individuais de `dist/blocks/*.css`
-2. **JavaScript**: Use arquivos individuais de `dist/blocks/*.js`
+1. **CSS**: Use arquivos individuais de `dist/blocks/*.css` (minificados)
+2. **JavaScript**: Use arquivos individuais de `dist/blocks/*.js` (minificados)
+
+### Performance
+
+- 📉 **CSS minificado**: ~40-60% de redução no tamanho
+- 📉 **JavaScript minificado**: ~50-70% de redução no tamanho
+- 🚀 **Carregamento otimizado**: Assets concatenados reduzem requisições HTTP
+- ⚡ **ES6+ suporte**: Terser mantém compatibilidade com JavaScript moderno
 
 ## 🛠️ Configuração Avançada
 

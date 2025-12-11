@@ -45,8 +45,8 @@ npm start              # Full development build with watch + BrowserSync proxy
 npx gulp css          # SASS compilation only  
 npx gulp cssUnified   # SASS unificado em dist/css/styles.css
 npx gulp html         # Nunjucks template compilation
-npx gulp javascript   # JavaScript individual copy
-npx gulp javascriptUnified # JavaScript unificado em dist/javascript/scripts.js
+npx gulp javascript   # JavaScript individual minificado
+npx gulp javascriptUnified # JavaScript unificado e minificado em dist/javascript/scripts.js
 npx gulp images       # Image optimization
 npx gulp clean        # Limpa pasta dist
 ```
@@ -91,11 +91,14 @@ Use placeholder selectors from `helpers/variables.sass`:
 - Templates compile to `dist/` folder for Magento integration
 - Use `{{ value | magento }}` for dynamic Magento content
 - Image paths use `media url=''` syntax for Magento media handling
+- CSS and JavaScript are automatically minified for production use
 
 ### Development Environment
 - Node.js 22.18.0 (see `.nvmrc`)
 - ES modules throughout (gulpfile.mjs, filter files)
 - PostCSS with autoprefixer and cssnano for production CSS
+- Terser for JavaScript minification with ES6+ support
+- gulp-plumber for robust error handling during development
 
 ## Common Tasks & Patterns
 

@@ -18,6 +18,7 @@ import filters from './src/helpers/filters.js';
 import plumber from 'gulp-plumber';
 import { deleteAsync } from 'del';
 import concat from 'gulp-concat';
+import terser from 'gulp-terser';
 
 const sassCompiler = sass(dartSass);
 
@@ -85,7 +86,7 @@ export function images() {
  * 📁 JavaScript - Copy Files
  * --------------------------------------------- */
 export function javascript() {
-  console.log('📦 Copiando arquivos JavaScript...');
+  console.log('📦 Copiando e minificando arquivos JavaScript...');
   
   return gulp.src('src/blocks/*.js', { base: 'src' })
     .pipe(plumber({
@@ -95,6 +96,18 @@ export function javascript() {
         console.error('📍 Processamento continua...');
         this.emit('end');
       }
+    }))
+    .pipe(terser({
+      compress: {
+        drop_console: false
+      },
+      mangle: true
+    }).on('error', function(err) {
+      console.error('❌ Erro na minificação JavaScript:', err.message);
+      console.error('📍 Linha:', err.line || 'desconhecida');
+      console.error('📍 Coluna:', err.col || 'desconhecida');
+      console.error('📍 Processamento continua...');
+      this.emit('end');
     }))
     .pipe(gulp.dest('./dist'))
     .on('error', function(err) {
@@ -108,7 +121,7 @@ export function javascript() {
  * --------------------------------------------- */
 export function javascriptUnified(done) {
   try {
-    console.log('🔗 Criando arquivo JavaScript unificado...');
+    console.log('🔗 Criando arquivo JavaScript unificado e minificado...');
     
     gulp.src('./src/blocks/*.js')
       .pipe(plumber({
@@ -120,13 +133,25 @@ export function javascriptUnified(done) {
         }
       }))
       .pipe(concat('scripts.js'))
+      .pipe(terser({
+        compress: {
+          drop_console: false
+        },
+        mangle: true
+      }).on('error', function(err) {
+        console.error('❌ Erro na minificação JavaScript unificado:', err.message);
+        console.error('📍 Linha:', err.line || 'desconhecida');
+        console.error('📍 Coluna:', err.col || 'desconhecida');
+        console.error('📍 Processamento continua...');
+        this.emit('end');
+      }))
       .pipe(gulp.dest('./dist/javascript'))
       .on('error', function(err) {
         console.error('❌ Erro ao salvar JavaScript unificado:', err.message);
         this.emit('end');
       });
     
-    console.log('✅ JavaScript unificado criado com sucesso');
+    console.log('✅ JavaScript unificado e minificado criado com sucesso');
     done();
   } catch (err) {
     console.error('❌ Erro geral na função JavaScript unificado:', err.message);
