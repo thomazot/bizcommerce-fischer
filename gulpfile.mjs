@@ -278,7 +278,6 @@ export function serveProxy(done) {
   }
 }
 
-
 /**
  * 3. Função para recarregar o CSS
  */
@@ -296,7 +295,9 @@ export function css(done) {
           this.emit('end');
         }
       }))
-      .pipe(sassCompiler())
+      .pipe(sassCompiler({
+         loadPaths: ["./src/helpers/"]
+      }))
       .pipe(postcss([autoprefixer(), cssnano()]).on('error', function(err) {
         console.error('❌ Erro PostCSS:', err.message);
         // Continue processamento mesmo com erro
@@ -337,9 +338,11 @@ export function cssUnified(done) {
           this.emit('end');
         }
       }))
-      .pipe(sassCompiler())
+      .pipe(sassCompiler({
+         loadPaths: ["./src/helpers/"]
+      }))
       .pipe(concat('styles.css'))
-      .pipe(postcss([autoprefixer(), cssnano()]).on('error', function(err) {
+      .pipe(postcss([autoprefixer()]).on('error', function(err) {
         console.error('❌ Erro PostCSS Unificado:', err.message);
         this.emit('end');
       }))

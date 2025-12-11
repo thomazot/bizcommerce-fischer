@@ -243,8 +243,9 @@ O build system utiliza `gulp-plumber` para **nunca quebrar** o processo de desen
 
 **SASS** (`src/blocks/home/hero.sass`):
 ```sass
-@use '../../helpers/classes' as *
-@use '../../helpers/variables' as *
+@use 'variables' as *
+@use 'media' as *
+@use 'classes' as *
 
 @include cls(hero)
   background: var(--brand-red-1)

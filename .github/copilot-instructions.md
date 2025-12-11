@@ -67,7 +67,15 @@ Development runs on port 3000 proxying `https://www.fischer.com.br` with custom 
 ### SASS Structure
 - `src/helpers/variables.sass` - Global variables, typography placeholders, CSS custom properties
 - `src/helpers/media.sass` - Responsive breakpoint mixins (`@include mobile`, `@include tablet`, etc.)
-- Component SASS files import both: `@use '../../helpers/variables' as *` and `@use '../../helpers/media' as *`
+- `src/helpers/classes.sass` - BEM class helpers (`@include cls(component)`, `@include element()`, `@include modifier()`)
+- `src/helpers/_component-template.sass` - Template padrão para novos componentes
+
+Componentes SASS **DEVEM** importar helpers no início (usando loadPaths configurado no Gulp):
+```sass
+@use 'variables' as *
+@use 'media' as *
+@use 'classes' as *
+```
 
 ### File Organization
 - Each page has its own folder in `src/blocks/` (e.g., `sobre-nos/`)
@@ -98,6 +106,7 @@ Use placeholder selectors from `helpers/variables.sass`:
 - ES modules throughout (gulpfile.mjs, filter files)
 - PostCSS with autoprefixer and cssnano for production CSS
 - Terser for JavaScript minification with ES6+ support
+- SASS with loadPaths configured for simplified imports from `src/helpers/`
 - gulp-plumber for robust error handling during development
 
 ## Common Tasks & Patterns
@@ -105,10 +114,27 @@ Use placeholder selectors from `helpers/variables.sass`:
 When creating new components:
 1. Create `.njk` template in appropriate `src/blocks/[page]/` folder
 2. Create corresponding `.sass` file with BEM structure
-3. Create `.js` file for component behavior (optional)
-4. Import SASS file in main page SASS file
-5. Use `parseJSON` filter or auto-loading for data
-6. Follow `fischer-2026` BEM naming convention
+3. **ALWAYS** start SASS file with helper imports (using simplified loadPaths):
+   ```sass
+   @use 'variables' as *
+   @use 'media' as *
+   @use 'classes' as *
+   ```
+4. Create `.js` file for component behavior (optional)
+5. Import SASS file in main page SASS file
+6. Use `parseJSON` filter or auto-loading for data
+7. Follow `fischer-2026` BEM naming convention
+2. Create corresponding `.sass` file with BEM structure
+3. **ALWAYS** start SASS file with helper imports (using simplified loadPaths):
+   ```sass
+   @use 'variables' as *
+   @use 'media' as *
+   @use 'classes' as *
+   ```
+4. Create `.js` file for component behavior (optional)
+5. Import SASS file in main page SASS file
+6. Use `parseJSON` filter or auto-loading for data
+7. Follow `fischer-2026` BEM naming convention
 
 JavaScript patterns:
 - Use `document.addEventListener("DOMContentLoaded", callback)` for initialization
