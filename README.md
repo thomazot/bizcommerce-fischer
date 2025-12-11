@@ -102,7 +102,13 @@ src/
 ### SASS Helper
 
 ```sass
-@use '../../helpers/classes' as *
+// ✅ RECOMENDADO: Import global único
+@use 'globals' as *
+
+// ✅ ALTERNATIVA: Imports individuais
+// @use 'variables' as *
+// @use 'media' as *
+// @use 'classes' as *
 
 @include cls(component-name)
   // Gera: .fischer-2026-component-name
@@ -178,7 +184,11 @@ Utilize placeholders pré-definidos em `src/helpers/variables.sass`:
 ## 📱 Breakpoints Responsivos
 
 ```sass
-@use '../helpers/media' as *
+// ✅ RECOMENDADO: Import global único
+@use 'globals' as *
+
+// ✅ ALTERNATIVA: Import individual
+// @use 'media' as *
 
 .meu-componente
   padding: 16px
