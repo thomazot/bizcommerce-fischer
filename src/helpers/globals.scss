@@ -3,11 +3,11 @@
 // Exemplo: @use "globals" as *
 
 // Forward todas as funcionalidades para permitir re-exportação
-@forward "variables"
-@forward "media"  
-@forward "classes"
+@forward "variables";
+@forward "media";
+@forward "classes";
 
 // Use com namespace global para acesso direto
-@use "variables" as *
-@use "media" as *
-@use "classes" as *
+@use "variables" as *;
+@use "media" as *;
+@use "classes" as *;

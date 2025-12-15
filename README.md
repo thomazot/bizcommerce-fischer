@@ -4,21 +4,23 @@
 
 ![Node.js](https://img.shields.io/badge/Node.js-22.18.0-green.svg)
 ![Gulp](https://img.shields.io/badge/Gulp-5.0.1-red.svg)
-![SASS](https://img.shields.io/badge/SASS-1.94.3-pink.svg)
+![SCSS](https://img.shields.io/badge/SCSS-1.94.3-pink.svg)
+![Stylelint](https://img.shields.io/badge/Stylelint-16.26.1-blue.svg)
 ![BEM](https://img.shields.io/badge/Metodologia-BEM-blue.svg)
 
 ## 🎯 Visão Geral
 
-Este projeto implementa um sistema de desenvolvimento frontend para o e-commerce Fischer, utilizando uma stack moderna com Gulp, SASS e Nunjucks. O projeto segue metodologia BEM com prefixo customizado `fischer-2026` e arquitetura baseada em componentes modulares.
+Este projeto implementa um sistema de desenvolvimento frontend para o e-commerce Fischer, utilizando uma stack moderna com Gulp, SCSS e Nunjucks. O projeto segue metodologia BEM com prefixo customizado `fischer-2026` e arquitetura baseada em componentes modulares.
 
 ### ⚡ Características Principais
 
 - **Build System Robusto**: Gulp 5.0 com tratamento avançado de erros
-- **Arquitetura Modular**: Componentes isolados com SASS e templates próprios
-- **Sistema BEM Automatizado**: Helpers SASS e Nunjucks para classes consistentes
+- **Arquitetura Modular**: Componentes isolados com SCSS e templates próprios
+- **Sistema BEM Automatizado**: Helpers SCSS e Nunjucks para classes consistentes
 - **Integração Magento 2**: Filtros específicos e estrutura de assets otimizada
 - **Hot Reload**: BrowserSync com proxy para desenvolvimento ágil
 - **Otimização de Assets**: Compressão de imagens e minificação automática
+- **Stylelint Configurado**: Ordenação automática de propriedades CSS e validação de código
 
 ## 🚀 Quick Start
 
@@ -79,19 +81,20 @@ src/
 │   ├── global.js          # JavaScript global para todas as páginas
 │   └── sobre-nos/         # Exemplo: página "Sobre Nós"
 │       ├── breadcrumb.njk  # Template do componente
-│       ├── breadcrumb.sass # Estilos do componente
+│       ├── breadcrumb.scss # Estilos do componente
 │       ├── history.njk     # Outros componentes
-│       ├── segments.sass   # da mesma página
-│       ├── sobre-nos.sass  # Arquivo principal da página
+│       ├── segments.scss   # da mesma página
+│       ├── sobre-nos.scss  # Arquivo principal da página
 │       └── sobre-nos.js    # JavaScript da página
 ├── data/                  # Dados em JSON
 │   └── sobre-nos.json     # Dados da página
 ├── helpers/               # Utilitários e filtros
-│   ├── classes.sass       # Helpers BEM para SASS
+│   ├── classes.scss       # Helpers BEM para SCSS
 │   ├── classes.njk        # Helpers BEM para templates
 │   ├── filters.js         # Filtros customizados Nunjucks
-│   ├── variables.sass     # Variáveis globais e tipografia
-│   └── media.sass         # Breakpoints responsivos
+│   ├── globals.scss       # Import centralizado de todos os helpers
+│   ├── variables.scss     # Variáveis globais e tipografia
+│   └── media.scss         # Breakpoints responsivos
 ├── assets/                # Assets organizados por página
 │   └── sobre-nos/         # Imagens específicas
 └── components/            # Componentes reutilizáveis
@@ -99,25 +102,28 @@ src/
 
 ## 🎨 Sistema BEM com Prefixo Automático
 
-### SASS Helper
+### SCSS Helper
 
-```sass
+```scss
 // ✅ RECOMENDADO: Import global único
-@use 'globals' as *
+@use "globals" as *;
 
 // ✅ ALTERNATIVA: Imports individuais
-// @use 'variables' as *
-// @use 'media' as *
-// @use 'classes' as *
+// @use 'variables' as *;
+// @use 'media' as *;
+// @use 'classes' as *;
 
-@include cls(component-name)
+@include cls(component-name) {
   // Gera: .fischer-2026-component-name
-  
-  @include element(header)
+
+  @include element(header) {
     // Gera: .fischer-2026-component-name__header
-    
-  @include modifier(active)
+  }
+
+  @include modifier(active) {
     // Gera: .fischer-2026-component-name--active
+  }
+}
 ```
 
 ### Template Helper
@@ -134,9 +140,11 @@ src/
 ```javascript
 // Usar classes BEM para seletores
 document.addEventListener("DOMContentLoaded", () => {
-  const elements = document.querySelectorAll(".fischer-2026-component__element");
-  
-  elements.forEach(el => {
+  const elements = document.querySelectorAll(
+    ".fischer-2026-component__element",
+  );
+
+  elements.forEach((el) => {
     el.addEventListener("click", handleClick);
   });
 });
@@ -147,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ### Carregamento Automático
 
 O Gulpfile carrega automaticamente dados JSON baseado na estrutura:
+
 - `src/blocks/sobre-nos/breadcrumb.njk` → `src/data/sobre-nos.json`
 
 ### Carregamento Manual
@@ -168,41 +177,48 @@ O Gulpfile carrega automaticamente dados JSON baseado na estrutura:
 
 ## 🎯 Sistema de Tipografia
 
-Utilize placeholders pré-definidos em `src/helpers/variables.sass`:
+Utilize placeholders pré-definidos em `src/helpers/variables.scss`:
 
-```sass
-.meu-titulo
-  @extend %title-1        // 32px/48px (mobile/tablet)
+```scss
+.meu-titulo {
+  @extend %title-1; // 32px/48px (mobile/tablet)
+}
 
-.texto-corpo  
-  @extend %normal-text-medium  // 16px weight 500
+.texto-corpo {
+  @extend %normal-text-medium; // 16px weight 500
+}
 
-.texto-pequeno
-  @extend %small-text-medium   // 14px weight 500
+.texto-pequeno {
+  @extend %small-text-medium; // 14px weight 500
+}
 ```
 
 ## 📱 Breakpoints Responsivos
 
-```sass
+```scss
 // ✅ RECOMENDADO: Import global único
-@use 'globals' as *
+@use "globals" as *;
 
 // ✅ ALTERNATIVA: Import individual
-// @use 'media' as *
+// @use 'media' as *;
 
-.meu-componente
-  padding: 16px
-  
-  @include tablet
-    padding: 24px
-    
-  @include desktop  
-    padding: 32px
+.meu-componente {
+  padding: 16px;
+
+  @include tablet {
+    padding: 24px;
+  }
+
+  @include desktop {
+    padding: 32px;
+  }
+}
 ```
 
 **Breakpoints disponíveis:**
+
 - `mobile`: max-width 767px
-- `tablet`: min-width 768px  
+- `tablet`: min-width 768px
 - `desktop`: min-width 1024px
 - `large-desktop`: min-width 1366px
 
@@ -218,10 +234,12 @@ O sistema roda em `localhost:3000` fazendo proxy para `https://www.fischer.com.b
 ### Estrutura de Build
 
 **Arquivos Individuais** (desenvolvimento):
+
 - `dist/blocks/sobre-nos.css` - CSS específico da página (minificado)
 - `dist/blocks/sobre-nos.js` - JavaScript específico da página (minificado)
 
 **Arquivos Unificados** (produção):
+
 - `dist/css/styles.css` - Todos os CSS concatenados e minificados
 - `dist/javascript/scripts.js` - Todos os JavaScript concatenados e minificados
 
@@ -237,53 +255,59 @@ O sistema roda em `localhost:3000` fazendo proxy para `https://www.fischer.com.b
 O build system utiliza `gulp-plumber` para **nunca quebrar** o processo de desenvolvimento:
 
 - ✅ **Erros SASS**: Logados com arquivo/linha, build continua
-- ✅ **Erros JSON**: Syntax errors reportados, processamento continua  
+- ✅ **Erros JSON**: Syntax errors reportados, processamento continua
 - ✅ **Erros Nunjucks**: Template errors logados, compilação continua
 
 ## 🏗️ Criando Novos Componentes
 
 1. **Crie o template**: `src/blocks/[pagina]/[componente].njk`
-2. **Crie os estilos**: `src/blocks/[pagina]/[componente].sass`
+2. **Crie os estilos**: `src/blocks/[pagina]/[componente].scss`
 3. **Crie o JavaScript**: `src/blocks/[pagina]/[componente].js` (opcional)
-4. **Importe o SASS**: Adicione `@use '[pagina]/[componente]'` no arquivo principal
+4. **Importe o SCSS**: Adicione `@use '[pagina]/[componente]'` no arquivo principal
 5. **Configure dados**: Adicione ao `src/data/[pagina].json` ou use `parseJSON`
 6. **Siga o padrão BEM**: Use helpers `cls()` para classes consistentes
+7. **Auto-formatação**: Stylelint ordena propriedades CSS automaticamente ao salvar
 
 ### 🌍 Import Global Unificado
 
-Para facilitar o desenvolvimento, use o arquivo `globals.sass` que centraliza todos os helpers:
+Para facilitar o desenvolvimento, use o arquivo `globals.scss` que centraliza todos os helpers:
 
-```sass
+```scss
 // ✅ RECOMENDADO: Import único
-@use 'globals' as *
+@use "globals" as *;
 
-// ✅ ALTERNATIVA: Imports individuais  
-@use 'variables' as *
-@use 'media' as *
-@use 'classes' as *
+// ✅ ALTERNATIVA: Imports individuais
+@use "variables" as *;
+@use "media" as *;
+@use "classes" as *;
 ```
 
-**Vantagens do globals.sass:**
+**Vantagens do globals.scss:**
+
 - ✅ **Menos código**: Um import ao invés de três
 - ✅ **Consistência**: Sempre ter todos os helpers disponíveis
-- ✅ **Manutenção**: Mudanças centralizadas no globals.sass
+- ✅ **Manutenção**: Mudanças centralizadas no globals.scss
 
 ### Exemplo Prático
 
-**SASS** (`src/blocks/home/hero.sass`):
-```sass
-// Import global único (recomendado)
-@use 'globals' as *
+**SCSS** (`src/blocks/home/hero.scss`):
 
-@include cls(hero)
-  background: var(--brand-red-1)
-  
-  @include element(title)
-    @extend %title-1
-    color: var(--base-white)
+```scss
+// Import global único (recomendado)
+@use "globals" as *;
+
+@include cls(hero) {
+  background: var(--brand-red-1);
+
+  @include element(title) {
+    @extend %title-1;
+    color: var(--base-white);
+  }
+}
 ```
 
 **Template** (`src/blocks/home/hero.njk`):
+
 ```njk
 {% from "helpers/classes.njk" import cls %}
 <section class="{{ cls('hero') }}">
@@ -292,10 +316,11 @@ Para facilitar o desenvolvimento, use o arquivo `globals.sass` que centraliza to
 ```
 
 **JavaScript** (`src/blocks/home/hero.js`):
+
 ```javascript
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".fischer-2026-hero");
-  
+
   if (hero) {
     hero.addEventListener("click", () => {
       console.log("Hero clicked!");
@@ -327,12 +352,14 @@ dist/
 ### Integração Magento 2
 
 **Para Produção (Recomendado)**:
+
 1. **CSS**: Use `dist/css/styles.css` (arquivo unificado e minificado)
 2. **JavaScript**: Use `dist/javascript/scripts.js` (arquivo unificado e minificado)
 3. **Templates**: Adapte templates de `dist/blocks/` para `.phtml`
 4. **Assets**: Importe imagens de `dist/assets/` para `media/`
 
 **Para Desenvolvimento**:
+
 1. **CSS**: Use arquivos individuais de `dist/blocks/*.css` (minificados)
 2. **JavaScript**: Use arquivos individuais de `dist/blocks/*.js` (minificados)
 
@@ -347,10 +374,10 @@ dist/
 
 ### Customização do Prefixo BEM
 
-Edite `$prefix` em `src/helpers/classes.sass`:
+Edite `$prefix` em `src/helpers/classes.scss`:
 
-```sass
-$prefix: 'meu-prefixo' !default
+```scss
+$prefix: "meu-prefixo" !default;
 ```
 
 ### Adicionando Novos Filtros
@@ -358,9 +385,36 @@ $prefix: 'meu-prefixo' !default
 Edite `src/helpers/filters.js`:
 
 ```javascript
-env.addFilter("meuFiltro", function(str) {
+env.addFilter("meuFiltro", function (str) {
   return str.toUpperCase();
 });
+```
+
+### Configuração Stylelint
+
+O projeto usa Stylelint com ordenação automática de propriedades CSS. Configure em `.stylelintrc.json`:
+
+**Ordenação de Propriedades:**
+
+- **Positioning**: position, top, right, bottom, left, z-index
+- **Box Model**: display, flex, width, height, margin, padding, overflow
+- **Typography**: color, font, line-height, text-align
+- **Visual**: background, border, box-shadow, opacity
+- **Animation**: transition, transform, animation
+- **Misc**: cursor, list-style, content
+
+**Auto-formatação ao salvar:**
+
+```json
+// .vscode/settings.json
+{
+  "[scss]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": "always"
+    }
+  }
+}
 ```
 
 ## 🤝 Contribuição

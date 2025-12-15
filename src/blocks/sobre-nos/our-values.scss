@@ -1,0 +1,91 @@
+@use "globals" as *;
+
+@include cls(our-values) {
+  @include tablet {
+    display: flex;
+  }
+
+  @include element(header) {
+    padding: 64px 16px 24px;
+    box-sizing: border-box;
+    color: var(--base-white);
+    background-color: var(--brand-red-1);
+
+    @extend %normal-text-medium;
+
+    @include mobile {
+      border-radius: $radius-large $radius-large 0 0;
+    }
+
+    @include tablet {
+      display: flex;
+      flex: 0 0 326px;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 40px 40px 64px;
+      border-radius: $radius-large 0 0 $radius-large;
+    }
+  }
+
+  @include element(title) {
+    @extend %title-3;
+  }
+
+  @include element(description) {
+    @extend %normal-text-medium;
+  }
+
+  @include element(content) {
+    padding: 24px 16px 64px;
+    background: var(--brand-off-white);
+
+    @include tablet {
+      flex: 1;
+      padding: 64px 40px;
+    }
+  }
+
+  @include element(list) {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include tablet {
+      display: flex;
+      flex-flow: wrap row;
+      gap: 24px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @include element(item) {
+    @include tablet {
+      flex: 0 0 calc(50% - 24px);
+    }
+  }
+
+  @include element(name) {
+    display: flex;
+    align-items: center;
+
+    @extend %normal-text-medium;
+
+    svg {
+      margin-right: 6px;
+    }
+  }
+
+  @include element(text) {
+    padding-left: 24px;
+
+    @extend %small-text-medium;
+  }
+}

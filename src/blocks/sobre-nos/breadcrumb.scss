@@ -1,0 +1,47 @@
+@use "globals" as *;
+
+@include cls(breadcrumb) {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  color: var(--base-white);
+  line-height: 24px;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+@include cls(breadcrumb, item) {
+  display: flex;
+  margin: 0;
+
+  @extend %small-text-medium;
+
+  &:not(:last-child) {
+    &::after {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      content: "•";
+    }
+  }
+}
+
+@include cls(breadcrumb, item, active) {
+  @extend %small-text-medium;
+}
+
+@include cls(breadcrumb, link) {
+  height: auto;
+  color: currentcolor;
+  line-height: 24px;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    color: currentcolor;
+  }
+}

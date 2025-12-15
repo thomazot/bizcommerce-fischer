@@ -1,6 +1,6 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-export default function (env) {
+export default function filters (env) {
   env.addFilter("magento", function (str) {
     // Nunjucks deve gerar literalmente {{ ... }}
     return `{{${str}}}`;

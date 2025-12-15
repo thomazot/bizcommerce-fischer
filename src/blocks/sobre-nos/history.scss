@@ -1,0 +1,90 @@
+@use "globals" as *;
+
+@include cls(history) {
+  @include element(container) {
+    @include tablet {
+      display: flex;
+      min-width: 1px;
+    }
+
+    &:first-child {
+      .fischer-2026-history__figure {
+        @include mobile {
+          padding-top: 64px;
+        }
+      }
+    }
+  }
+
+  @include element(title) {
+    color: var(--base-black);
+
+    @extend %title-3;
+
+    span {
+      color: var(--brand-red-1);
+    }
+  }
+
+  @include element(content) {
+    @extend %normal-text-medium;
+
+    @include mobile {
+      margin-left: 20px;
+      padding: 20px 20px 20px 36px;
+      border-left: 1px solid var(--base-black);
+    }
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      order: 1;
+      min-width: 1px;
+      padding: 40px;
+      text-align: right;
+      border-right: 1px solid var(--base-black);
+    }
+  }
+
+  @include element(figure) {
+    position: relative;
+
+    @include mobile {
+      margin-left: 20px;
+      padding: 20px 20px 20px 36px;
+      border-left: 1px solid var(--base-black);
+    }
+
+    @include tablet {
+      flex: 0 0 50%;
+      order: 2;
+      padding: 40px;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: -5px;
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin-top: -5px;
+      background: var(--base-white);
+      border-radius: 3px;
+      border-top: 1px solid var(--base-black);
+      border-right: 1px solid var(--base-black);
+      transform: rotate(45deg);
+      content: "";
+    }
+  }
+
+  @include element(legend) {
+    @extend %small-text-medium;
+  }
+
+  @include element(description) {
+    @extend %normal-text-medium;
+  }
+}

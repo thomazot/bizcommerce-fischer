@@ -1,0 +1,57 @@
+@use "globals" as *;
+
+// Importações dos componentes individuais
+@use "sobre-nos/breadcrumb";
+@use "sobre-nos/history";
+@use "sobre-nos/our-values";
+@use "sobre-nos/segments";
+
+// Estilos globais da página
+.breadcrumbs {
+  display: none !important;
+}
+
+div[data-content-type="row"] {
+  .widget {
+    margin: 0;
+  }
+}
+
+@include cls(title) {
+  margin: 0;
+  color: var(--base-white);
+
+  @extend %title-1;
+}
+
+@include cls(description) {
+  padding: 64px 24px;
+  color: var(--base-white);
+  background-color: var(--brand-red-1);
+
+  @extend %large-text;
+
+  @include tablet {
+    padding: 64px 80px;
+  }
+}
+
+@include cls(sobre-nos-text) {
+  padding: 64px 0;
+  color: var(--base-black);
+  text-align: center;
+
+  @extend %large-text-regular;
+
+  @include modifier(uppercase) {
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  & + & {
+    padding-top: 0;
+  }
+}

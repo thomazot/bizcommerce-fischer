@@ -1,0 +1,158 @@
+@use "media" as *;
+
+$radius: 4px;
+$radius-large: 8px;
+
+:root {
+  --base-white: rgb(255 255 255 / 100%);
+  --base-black: rgb(0 0 0 / 100%);
+  --base-transparent: rgb(255 255 255 / 0%);
+  --brand-red-1: rgb(175 39 47 / 100%);
+  --brand-red-2: rgb(146 32 34 / 100%);
+  --brand-red-3: rgb(127 27 26 / 100%);
+  --brand-off-white: rgb(247 247 247 / 100%);
+  --brand-gray-1: rgb(140 137 133 / 100%);
+  --brand-gray-2: rgb(102 102 102 / 100%);
+  --brand-gray-3: rgb(86 86 86 / 100%);
+}
+
+%title-1 {
+  font-size: 32px;
+  line-height: 1.25;
+
+  @include tablet {
+    font-size: 48px;
+  }
+}
+
+%title-1-bold {
+  font-weight: 700;
+
+  @extend %title-1;
+}
+
+%title-1-semibold {
+  font-weight: 600;
+
+  @extend %title-1;
+}
+
+%title-2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+
+  @include tablet {
+    font-size: 32px;
+  }
+}
+
+%title-3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+%title-4 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+%title-5 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+%text-box {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+%large-text {
+  font-size: 16px;
+  line-height: 1.5;
+
+  @include desktop {
+    font-size: 20px;
+  }
+}
+
+%large-text-regular {
+  font-weight: 400;
+
+  @extend %large-text;
+}
+
+%large-text-medium {
+  font-weight: 500;
+
+  @extend %large-text;
+}
+
+%normal-text {
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+%normal-text-regular {
+  font-weight: 400;
+
+  @extend %normal-text;
+}
+
+%normal-text-medium {
+  font-weight: 500;
+
+  @extend %normal-text;
+}
+
+%normal-text-medium-uppercase {
+  font-weight: 500;
+  text-transform: uppercase;
+
+  @extend %normal-text-medium;
+}
+
+%normal-text-bold {
+  font-weight: 700;
+
+  @extend %normal-text;
+}
+
+%small-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+%small-text-bold {
+  font-weight: 700;
+
+  @extend %small-text;
+}
+
+%small-text-semibold {
+  font-weight: 600;
+
+  @extend %small-text;
+}
+
+%small-text-medium {
+  font-weight: 500;
+
+  @extend %small-text;
+}
+
+%small-text-regular {
+  font-weight: 400;
+
+  @extend %small-text;
+}
+
+%small-text-2 {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+}

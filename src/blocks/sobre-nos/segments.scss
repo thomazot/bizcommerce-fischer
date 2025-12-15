@@ -1,0 +1,69 @@
+@use "globals" as *;
+
+@include cls(segments) {
+  @include element(checkbox) {
+    display: none;
+  }
+
+  @include element(title) {
+    @extend %title-3;
+  }
+
+  @include element(description) {
+    @extend %normal-text-medium;
+  }
+
+  @include element(header) {
+    display: flex;
+
+    @extend %normal-text-medium;
+  }
+
+  @include element(container) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @include element(box) {
+    padding: 24px 16px;
+    box-sizing: border-box;
+    background: var(--brand-off-white);
+    border-radius: $radius-large;
+  }
+
+  @include element(name) {
+    margin: 0;
+    box-sizing: border-box;
+
+    @extend %normal-text-medium;
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include element(content) {
+    max-height: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  @include element(text) {
+    @extend %normal-text-medium;
+  }
+
+  @include element(link) {
+    color: var(--brand-red-1);
+
+    @extend %small-text-medium;
+  }
+
+  @include element(label) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+  }
+}
