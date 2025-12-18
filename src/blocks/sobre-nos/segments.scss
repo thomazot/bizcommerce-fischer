@@ -14,8 +14,6 @@
   }
 
   @include element(header) {
-    display: flex;
-
     @extend %normal-text-medium;
   }
 
@@ -33,13 +31,24 @@
   }
 
   @include element(name) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 0;
     box-sizing: border-box;
+    cursor: pointer;
+    cursor: handle;
 
     @extend %normal-text-medium;
 
     svg {
       transform: rotate(180deg);
+    }
+
+    &[aria-expanded="true"] {
+      svg {
+        transform: rotate(0deg);
+      }
     }
   }
 
@@ -48,6 +57,10 @@
     margin: 0;
     box-sizing: border-box;
     overflow: hidden;
+
+    &[aria-hidden="false"] {
+      max-height: 100vh;
+    }
   }
 
   @include element(text) {

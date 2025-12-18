@@ -4,14 +4,14 @@
     { "text": "Sobre nós", "active": true }
   ],
   "title": "Sobre nós",
-  "description": "A Fischer comercializa seus produtos não apenas no Brasil, mas também em centenas de pontos…",
+  "description": "A Fischer comercializa seus produtos não apenas no Brasil, mas também em centenas de pontos de venda no Mercosul, uma marca que evolui com o seu público, afinal, seus produtos podem ser encontrados tanto em lojas físicas quanto no e-commerce, possibilitando que pessoas em todo o Brasil tenham acesso aos produtos mais desejados.",
   "history": [
     {
       "year": "1961",
       "title": "O início",
       "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-image-1.jpg'",
       "descriptions": [
-        "No começo, tudo se resumia a uma pequena oficina…"
+        "No começo, tudo se resumia a uma pequena oficina de consertos de bicicletas, fundada em 1961. A evolução de pequenos consertos a novos mercados, foi questão de tempo."
       ]
     },
     {
@@ -20,8 +20,8 @@
       "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-image-2.jpg'",
       "legend": "Da esquerda para a direita os irmãos: Ingo, Nivert, Egon, Edemar e Norival Fischer.",
       "descriptions": [
-        "Da pequena oficina, o negócio evoluiu…",
-        "Instalada em Brusque, Santa Catarina…"
+        "Da pequena oficina, o negócio evoluiu até se tornar, em 1966, a Fischer, uma das maiores empresas de eletrodomésticos, construção civil e sistema construtivo modular do Brasil, administrada e impulsionada pelo talento, visão e determinação de 5 irmãos.",
+        "Instalada em Brusque, Santa Catarina, uma região com grande desenvolvimento econômico, logo a Fischer se tornou referência em seu segmento graças ao trabalho duro, dinamismo e constante aperfeiçoamento de produtos e processos."
       ]
     },
     {
@@ -29,7 +29,7 @@
       "title": "Gerando praticidade",
       "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-image-3.jpg'",
       "descriptions": [
-        "Hoje, após mais de 59 anos de história…"
+        "Hoje, após mais de 59 anos de história e sólidos investimentos em expansão, ocupa um moderno complexo industrial com mais de 150 mil metros quadrados, é pioneira na fabricação de cooktops no Brasil, contando com centenas de profissionais que produzem um mix com mais de 180 produtos baseados em tecnologia, design, sofisticação e altíssima qualidade que geram praticidade na vida de milhares de pessoas."
       ]
     }
   ],
@@ -43,19 +43,19 @@
       },
       {
         "name": "Foco no resultado",
-        "text": "Para garantir a sustentabilidade…"
+        "text": "Para garantir a sustentabilidade em todos os aspectos;"
       },
       {
         "name": "Inovação",
-        "text": "Guiando-nos para o futuro…"
+        "text": "Guiando-nos para o futuro, com pioneirismo e ousadia;"
       },
       {
         "name": "Respeito ética e honestidade",
-        "text": "Pilares de credibilidade…"
+        "text": "Pilares de credibilidade na relação com as pessoas;"
       },
       {
         "name": "Espirito de equipe",
-        "text": "Energia positiva…"
+        "text": "Energia positiva para irmos mais longe;"
       },
       {
         "name": "Qualidade",
@@ -65,24 +65,24 @@
   },
   "segments": {
     "title": "Segmentos de mercado",
-    "description": "Além do segmento de eletrodomésticos…",
+    "description": "Além do segmento de eletrodomésticos, a Fischer também atua no segmento de construção civil e no segmento de sistemas construtivos modulares, ajudando a realizar sonhos e aumentando a qualidade de vida de milhares de famílias em todo o Brasil.",
     "items": [
       {
         "name": "Eletrodomésticos",
         "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-segments-1.jpg'",
-        "text": "Lorem ipsum dolor sit amet…",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
         "link": { "text": "ver produtos", "url": "" }
       },
       {
         "name": "Construção Civil",
         "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-segments-2.jpg'",
-        "text": "Lorem ipsum dolor sit amet…",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
         "link": { "text": "ver produtos", "url": "" }
       },
       {
         "name": "Sistema Construtivo Modular",
         "image": "media url='.renditions/wysiwyg/2026/sobre-nos/banner-sobre-nos-segments-3.jpg'",
-        "text": "Lorem ipsum dolor sit amet…"
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
       }
     ]
   }
