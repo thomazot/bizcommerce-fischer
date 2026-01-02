@@ -16,6 +16,7 @@ import plumber from "gulp-plumber";
 import { deleteAsync } from "del";
 import concat from "gulp-concat";
 import terser from "gulp-terser";
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 const sassCompiler = sass(dartSass);
 
@@ -248,8 +249,50 @@ export function serveProxy(done) {
   try {
     const customLinkWithHash = `<link rel="stylesheet" type="text/css" href="/custom-css/styles.css" />`;
     const customScriptWithHash = `<script type="text/javascript" src="/custom-js/scripts.js"></script>`;
+
+    // Configuração do proxy com CORS
+    const proxyMiddleware = createProxyMiddleware({
+      target: "https://www.fischer.com.br",
+      changeOrigin: true,
+      secure: false,
+      onProxyRes: function (proxyRes, req, res) {
+        // Adiciona headers CORS em todas as respostas
+        proxyRes.headers["Access-Control-Allow-Origin"] = "*";
+        proxyRes.headers["Access-Control-Allow-Methods"] =
+          "GET, POST, PUT, DELETE, OPTIONS";
+        proxyRes.headers["Access-Control-Allow-Headers"] =
+          "Origin, X-Requested-With, Content-Type, Accept, Authorization";
+        proxyRes.headers["Access-Control-Allow-Credentials"] = "true";
+      },
+    });
+
     const CONFIG_BS = {
-      proxy: "https://www.fischer.com.br",
+      server: {
+        baseDir: "./dist",
+        middleware: [
+          // Middleware para responder OPTIONS
+          function (req, res, next) {
+            res.setHeader("Access-Control-Allow-Origin", "*");
+            if (req.method === "OPTIONS") {
+              res.setHeader(
+                "Access-Control-Allow-Methods",
+                "GET, POST, PUT, DELETE, OPTIONS",
+              );
+              res.setHeader(
+                "Access-Control-Allow-Headers",
+                "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+              );
+              res.setHeader("Access-Control-Allow-Credentials", "true");
+              res.statusCode = 200;
+              res.end();
+              return;
+            }
+            next();
+          },
+          // Proxy middleware para todas as outras requisições
+          proxyMiddleware,
+        ],
+      },
       port: 3000,
       injectChanges: false,
       serveStatic: [

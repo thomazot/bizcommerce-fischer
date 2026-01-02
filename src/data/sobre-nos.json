@@ -85,5 +85,39 @@
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud."
       }
     ]
+  },
+  "our-stores": {
+    "title": "Conheça nossas linhas",
+    "description": "lorem ipsum dolor sit amet consectetur adipiscing elit",
+    "galleries": [
+      {
+        "text": "Imagem 1",
+        "image": "media url=.renditions/wysiwyg/2026/sobre-nos/sobre-nos-nossa-linha-01.jpg",
+        "url": ""
+      },
+      {
+        "text": "Imagem 2",
+        "image": "media url=.renditions/wysiwyg/2026/sobre-nos/sobre-nos-nossa-linha-02.jpg",
+        "url": ""
+      },
+      {
+        "text": "Imagem 3",
+        "image": "media url=.renditions/wysiwyg/2026/sobre-nos/sobre-nos-nossa-linha-03.jpg",
+        "url": ""
+      },
+      {
+        "text": "Imagem 4",
+        "image": "media url=.renditions/wysiwyg/2026/sobre-nos/sobre-nos-nossa-linha-04.jpg",
+        "url": ""
+      }
+    ],
+    "footer": {
+      "image": "media url=.renditions/wysiwyg/2026/sobre-nos/linha-infinity.jpg",
+      "text": "A Coifa de Parede Fischer Fit deixa a cozinha livre de odores, garantindo o bem-estar e o conforto do lar. Fabricada em aço inox escovado e vidro temperado, a Coifa possui função de depurador ou exaustor, de fácil controle e extrema eficiência para quem busca uma cozinha bonita e higienizada.",
+      "link": {
+        "url": "",
+        "text": "ver produtos"
+      }
+    }
   }
 }

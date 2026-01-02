@@ -1,0 +1,33 @@
+{% from "helpers/classes.njk" import cls %}
+{% set sobreNosData = 'sobre-nos.json' | parseJSON %}
+<div class="{{ cls('our-stores') }}">
+  <div class="{{ cls('our-stores', 'header') }}">
+    <h3 class="{{ cls('our-stores', 'title') }}">{{ sobreNosData['our-stores'].title }}</h3>
+    <p class="{{ cls('our-stores', 'description') }}">{{ sobreNosData['our-stores'].description }}</p>
+  </div>
+  <div class="{{ cls('our-stores', 'container') }}">
+    <div class="{{ cls('our-stores', 'nav') }}">
+      {% for store in sobreNosData['our-stores'].galleries %}
+        <div class="{{ cls('our-stores', 'nav-item') }}">
+          <a href="{{ store.url }}" data-store-name="{{ store.name }}">
+            <img src="{{ store.image | magento }}" alt="{{ store.name }}"/>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="{{ cls('our-stores', 'content') }}">
+      {% for store in sobreNosData['our-stores'].galleries %}
+        <div class="{{ cls('our-stores', 'content-item') }}" data-store-name="{{ store.name }}">
+          <a href="{{ store.url }}">
+            <img src="{{ store.image | magento }}" alt="{{ store.name }}"/>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="{{ cls('our-stores', 'footer') }}">
+      <img src="{{ sobreNosData['our-stores'].footer.image | magento }}" alt="{{ sobreNosData['our-stores'].footer.text }}"/>
+      <p class="{{ cls('our-stores', 'footer-text') }}">{{ sobreNosData['our-stores'].footer.text }}</p>
+      <a class="{{ cls('our-stores', 'footer-link') }}" href="{{ sobreNosData['our-stores'].footer.link.url }}">{{ sobreNosData['our-stores'].footer.link.text }}</a>
+    </div>
+  </div>
+</div>

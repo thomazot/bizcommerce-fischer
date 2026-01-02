@@ -1,6 +1,8 @@
 @use "globals" as *;
 
 @include cls(segments) {
+  position: relative;
+
   @include element(checkbox) {
     display: none;
   }
@@ -24,10 +26,17 @@
   }
 
   @include element(box) {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0;
     padding: 24px 16px;
     box-sizing: border-box;
     background: var(--brand-off-white);
     border-radius: $radius-large;
+
+    @include modifier(active) {
+      gap: 40px;
+    }
   }
 
   @include element(name) {
@@ -36,6 +45,7 @@
     align-items: center;
     margin: 0;
     box-sizing: border-box;
+    line-height: 48px;
     cursor: pointer;
     cursor: handle;
 
@@ -46,6 +56,8 @@
     }
 
     &[aria-expanded="true"] {
+      box-shadow: 0 1px 0 0 var(--base-black);
+
       svg {
         transform: rotate(0deg);
       }
@@ -53,6 +65,10 @@
   }
 
   @include element(content) {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    gap: 16px;
     max-height: 0;
     margin: 0;
     box-sizing: border-box;
@@ -64,13 +80,16 @@
   }
 
   @include element(text) {
+    margin: 0;
+
     @extend %normal-text-medium;
   }
 
   @include element(link) {
+    align-self: flex-start;
     color: var(--brand-red-1);
 
-    @extend %small-text-medium;
+    @extend %button;
   }
 
   @include element(label) {
@@ -78,5 +97,61 @@
     justify-content: space-between;
     align-items: center;
     height: 56px;
+  }
+
+  @include element(content-box) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @include tablet {
+    @include element(container) {
+      display: flex;
+      justify-content: center;
+      flex-flow: row wrap;
+
+      &::before {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 48px;
+        border-bottom: solid 1px var(--brand-gray-1);
+        content: "";
+      }
+    }
+
+    @include element(box) {
+      display: contents;
+    }
+
+    @include element(name) {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      order: 1;
+
+      svg {
+        display: none;
+      }
+
+      &[aria-expanded="true"] {
+        box-shadow: inset 0 -2px 0 0 var(--base-black);
+      }
+    }
+
+    @include element(content) {
+      flex-flow: row nowrap;
+      align-items: center;
+      order: 2;
+
+      img {
+        flex: 0 0 50%;
+      }
+
+      &[aria-hidden="false"] {
+        padding-top: 30px;
+      }
+    }
   }
 }

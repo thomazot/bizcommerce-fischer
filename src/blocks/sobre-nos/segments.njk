@@ -15,10 +15,12 @@
         </h4>
         <div class="{{ cls('segments', 'content') }}">
           <img src="{{ item.image | magento }}" alt="{{ item.name }}"/>
-          <p class="{{ cls('segments', 'text') }}">{{ item.text }}</p>
-          {% if item.link %}
-            <a class="{{ cls('segments', 'link') }}" href="{{ item.link.url }}">{{ item.link.text }}</a>
-          {% endif %}
+          <div class="{{ cls('segments', 'content-box') }}">
+            <p class="{{ cls('segments', 'text') }}">{{ item.text }}</p>
+            {% if item.link %}
+              <a class="{{ cls('segments', 'link') }}" href="{{ item.link.url }}">{{ item.link.text }}</a>
+            {% endif %}
+          </div>
         </div>
       </div>
     {% endfor %}

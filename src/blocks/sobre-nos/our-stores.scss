@@ -1,0 +1,14 @@
+@use "globals" as *;
+
+@include cls(our-stores) {
+  @include element(nav-item) {
+    width: 72px;
+    height: 72px;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
